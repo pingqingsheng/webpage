@@ -23,7 +23,7 @@ example. I'm gonna to install this model with ADMM algorithm and through <code> 
 So let's get start:
 
 ## Prerequisite
-% 
+[//]:# (This is just a comment test)
 
 ## Build the Skeleton of the Package
 
