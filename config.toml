@@ -50,12 +50,12 @@ showprojects    = true # Show Projects section on home page
 # This is your projects section. Three images of the same dimensions will look the nicest. If images are omitted, text links will be shown.
 project1link    = "#"
 project1img     = "img/project1.jpg"
-project1title   = "Project 1"
+project1title   = "Grammatical Facial Expression Recognition with ML Methods"
 
 project2link    = "#"
 project2img     = "img/project2.jpg"
-project2title   = "Project 2"
+project2title   = "Stochastic Volatility Model with PyMc 3"
 
 project3link    = "#"
 project3img     = "img/project3.jpg"
-project3title   = "Project 3"
+project3title   = "What Makes People Unhealthy: A Data Mining Project"
