@@ -1,8 +1,9 @@
-+++
-date = "2017-03-09T13:19:25+08:00"
-draft = false
-title = "about"
-+++
+---
+date  : "2017-03-09T13:19:25+08:00"
+draft : false
+title : "about"
+fontsize : 20pt
+---
 
 <p style=" font-family:Arial; font-size:250% ">
 A STAT graduate student trying to earn a living with his superficial knowledge.
