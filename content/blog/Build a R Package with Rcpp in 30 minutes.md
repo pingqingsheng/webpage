@@ -1,18 +1,9 @@
 ---
-
-<<<<<<< HEAD
 date     : "2017-04-26T15:27:33-05:00"
-
 draft    :  false
 title    : "Build a R Package with Rcpp in 30 minutes"
 subtitle : <h2> "Example : Poisson LASSO Regression" </h2>
 fontsize : 14pt
-=======
-date  : "2017-04-26T15:27:33-05:00"
-draft : false
-title : "Build a R Package with Rcpp in 30 minutes"
-subtitle : "Example : Poisson LASSO Regression"
->>>>>>> origin/master
 ---
 
 <code> Rcpp </code> is package with which you could write c++ code within R. 
