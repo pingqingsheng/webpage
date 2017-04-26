@@ -1,9 +1,10 @@
 ---
 
-date     = "2017-04-26T15:27:33-05:00"
+date     : "2017-04-26T15:27:33-05:00"
 
-title    = "Build a R Package with Rcpp in 30 minutes"
-subtitle = "Example : Poisson LASSO Regression"
+draft    :  false
+title    : "Build a R Package with Rcpp in 30 minutes"
+subtitle : "Example : Poisson LASSO Regression"
 ---
 
 <code> Rcpp </code> is package with which you could write c++ code within R. 
@@ -13,7 +14,7 @@ You could simply write a inline C++ code in R like this:
 <code>
 </code>
 
-Or you could save your <code> .cpp <code> file and call the function from R. With this
+Or you could save your <code> .cpp </code> file and call the function from R. With this
 powerful tool, you gain the productivity of R and the speed of C++
 
 Let's try to build a small package with <code> Rcpp </code>. Take the Poisson LASSO regression as an 
