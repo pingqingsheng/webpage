@@ -1,5 +1,5 @@
 ---
-date     : "2017-04-26T15:27:33-05:00"
+date     : "2017-04-26"
 draft    :  false
 title    : "Build a R Package with Rcpp in 30 minutes"
 subtitle : "Example : Poisson LASSO Regression" 
@@ -41,13 +41,14 @@ powerful tool, you gain the productivity of R and the speed of C++.
 </p>
 
 <p style=' font-family:"Times New Rome"; font-size:14pt '>
-Let's try to build a small package with <code> Rcpp </code>. Take the Poisson LASSO regression as an example. I'm gonna to install this model with ADMM algorithm and through <code> armidillo </code> package.
+Let's try to build a small package with <code> Rcpp </code>. Take the Poisson LASSO regression as an example. I'm gonna to install this model with ADMM algorithm and through <code> RcppArmadillo </code> package.
 </p>
 
 <p style=' font-family:"Times New Rome"; font-size:14pt '>
 So let's get start:
 </p>
 
+<br><br>
 
 ### __Prerequisite__
 
@@ -59,8 +60,7 @@ So let's get start:
 + <code> RcppArmadillo </code>
 </dl>
 
-\
-\
+<br><br>
 
 ### __Build the Skeleton of the Package__
 
@@ -76,9 +76,9 @@ Rcpp.package.skeleton('PoisLASSO') # Your package name should go there
 In the folder PoisLASSO, there is a folder called src where you should put all your C++ files there. Let's build a new C++ file called "*PoisLASSO.cpp*". And we'll put our function in this file.
 </p>
 
-### __Poisson LASSO Regression and ADMM algorithm__
+<br><br>
 
-\
+### __Poisson LASSO Regression and ADMM algorithm__
 
 <p style=' font-family:"Times New Rome"; font-size:14pt '>
 I'll skip the detail of this algorithm. But the main idea is to iteratively optimize the objective function and its conjugate problem. The objective function is solved with Lagrange multipler method with augmented variable. And the algorithm is presented as below:
@@ -188,7 +188,7 @@ I'll skip the detail of this algorithm. But the main idea is to iteratively opti
 
 ```
 
-
+<br><br>
 
 ### __Build the Package and Upload to Github__
 
