@@ -20,6 +20,8 @@ fontsize :  18pt
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 You could simply write a inline C++ code in R like this:
 </p>
+<p><br />
+</p>
 <pre class="r"><code>library(Rcpp)
 
 # Define a Rcpp function
@@ -35,6 +37,8 @@ add_vec &lt;- Rcpp::cppFunction(
 
 # See the result
 t(add_vec(c(1,2,3), c(2,3,4)))</code></pre>
+<br />
+
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 Or you could save your <code> .cpp </code> file and call the function from R. With this powerful tool, you gain the productivity of R and the speed of C++.
 </p>
@@ -44,7 +48,6 @@ Let’s try to build a small package with <code> Rcpp </code>. Take the Poisson 
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 So let’s get start:
 </p>
-<p><br><br></p>
 <div id="prerequisite" class="section level3">
 <h3><strong>Prerequisite</strong></h3>
 <dl style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
@@ -54,7 +57,6 @@ So let’s get start:
 <li><code> RcppArmadillo </code></li>
 </ul>
 </dl>
-<p><br><br></p>
 </div>
 <div id="build-the-skeleton-of-the-package" class="section level3">
 <h3><strong>Build the Skeleton of the Package</strong></h3>
@@ -63,12 +65,13 @@ So let’s get start:
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 In the folder PoisLASSO, there is a folder called src where you should put all your C++ files there. Let’s build a new C++ file called “<em>PoisLASSO.cpp</em>”. And we’ll put our function in this file.
 </p>
-<p><br><br></p>
 </div>
 <div id="poisson-lasso-regression-and-admm-algorithm" class="section level3">
 <h3><strong>Poisson LASSO Regression and ADMM algorithm</strong></h3>
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 I’ll skip the detail of this algorithm. But the main idea is to iteratively optimize the objective function and its conjugate problem. The objective function is solved with Lagrange multipler method with augmented variable. And the algorithm is presented as below:
+</p>
+<p><br />
 </p>
 <pre class="cpp"><code>  
   #include &lt;iostream&gt;
@@ -171,29 +174,40 @@ I’ll skip the detail of this algorithm. But the main idea is to iteratively op
   return(b_gd);
 }
 </code></pre>
-<p><br><br></p>
 </div>
 <div id="build-the-package-and-upload-to-github" class="section level3">
 <h3><strong>Build the Package and Upload to Github</strong></h3>
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 Go to the upper directory of your current directory, which contain the PoissLASSO folder. And open your command line (you could do it with <code> devtools </code> as well), and write:
 </p>
+<p><br />
+</p>
 <pre class="bash"><code>R CMD build PoissLASSO
 R CMD check PoissLASSO</code></pre>
+<br />
+
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 If everything is OK, you could now install your package locally <code> devtools::install(‘PoissLASSO’) </code>.
 </p>
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 And upload your package to Github with:
 </p>
+<p><br />
+</p>
 <pre class="bash"><code>git init
 git add .
 git remote add -v &quot;Your Repo URL go here&quot;
 git commit -m &quot;First Commit&quot;
 git push -u origin master</code></pre>
+<br />
+
 <p style=" font-family:&quot;Times New Rome&quot;; font-size:14pt ">
 And after finishing this, you should be able to download your own package with
 </p>
+<p><br />
+</p>
 <pre class="r"><code>devtools::install_github(&#39;Your Git Account Name/Your repo name&#39;)
 library(&#39;PoissLASSO&#39;)</code></pre>
+<p><br />
+</p>
 </div>

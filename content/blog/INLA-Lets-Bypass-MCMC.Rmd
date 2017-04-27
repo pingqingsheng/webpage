@@ -1,0 +1,104 @@
+---
+title : "INLA : Let's bypass MCMC"
+date  : "2017-04-26"
+draft : false
+output: html_document
+fontsize : 18pt
+---
+
+### __INLA__ 
+
+<p style = "font-family : Arial; font-size : 150%">
+Markov Chain Monte Carlo (MCMC) is a widely used algorithm to sample from posterior distribution that is not in closed form. The draw back of MCMC is that it is usually computationally intensive and its convergence is hard to verify. Integrated nested Laplace approximation (INLA, original paper could be found at : https://folk.ntnu.no/hrue/r-inla.org/papers/inla-rss.pdf) is algorithm that , instead of sampling from posterior, try to analytically approximate the posterior. This method could be applied to a large collection of Bayesian model, and it's usually many times faster and provide reasonable accuracy.
+</p>
+
+<p style = "font-family : Arial; font-size : 150%">
+Let's compare the computation speed of this method with a stan installment.
+</p>
+
+### __Simple Logistic Regression Example__
+
+<p style = "font-family : Arial; font-size : 150%">
+Sample some data first :
+</p>
+
+```{r echo=TRUE}
+
+# Data generation
+n=1000
+Ntrials = sample(c(80:100), size=n, replace=TRUE)
+eta = rnorm(n,0,0.5)
+prob = exp(eta)/(1 + exp(eta))
+y = rbinom(n, size=Ntrials, prob = prob)
+dat=data.frame(y=y,z=1:n,Ntrials)
+
+```
+
+<p style = "font-family : Arial; font-size : 150%">
+[R-INLA](http://www.r-inla.org/) project has a package <code> INLA </code> available in CRAN. Use it to estimate a logistic model :
+</p>
+
+```{r echo=TRUE, eval=FALSE}
+
+library(INLA)
+
+formula = y ??? z 
+t_start <- proc.time()
+m=inla(formula, data=dat,family="binomial",Ntrials=Ntrials,
+       control.predictor = list(compute = TRUE))
+t_end <- proc.time()
+
+T_INLA <- t_end - t_start
+
+```
+
+### __Compared with Stan__
+
+A stan code could be writen as :
+
+```{r echo=TRUE, eval=FALSE}
+
+data {
+  int<lower=0> N;
+  int<lower=0> p;
+  int<lower=1> z[N];
+  int<lower=0> Ntrials[N];
+  int<lower=0> y[N];
+}
+
+parameters {
+  real beta[p];
+}
+
+transformed parameters  {
+  real<lower=0> odds[N];
+  real<lower=0, upper=1> prob[N];
+
+  for (i in 1:N) {
+    odds[i] = exp(beta[1] + beta[2]*z[i]);
+    prob[i] = odds[i] / (odds[i] + 1);
+  }
+}
+
+model {
+    y ~ binomial(Ntrials, prob);
+}
+
+```
+
+Save code below as a .stan file and run following R code :
+
+```{r echo=TRUE, eval=FALSE}
+
+Dat <- list(y = dat$y, z = dat$z, Ntrials = dat$Ntrials, N=length(y), p=2)
+
+T_start <- proc.time()
+M_stan <- stan(file = 'model.stan', data=Dat, 
+               chain=1, iter=10000,
+               verbose = TRUE)
+T_end <- proc.time()
+
+T_stan <- T_end - T_start
+
+```
+
