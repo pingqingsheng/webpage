@@ -1,6 +1,6 @@
 ---
 title : "INLA : Let's bypass MCMC"
-date  : "2017-04-26"
+date  : "2017-04-26T11:55:32+08:00"
 draft : false
 output: html_document
 fontsize : 18pt
