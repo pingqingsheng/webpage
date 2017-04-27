@@ -1,5 +1,5 @@
 ---
-date     : "2017-04-26T11:56:32+08:00"
+date     : "2017-04-26"
 draft    :  false
 title    : "Build a R Package with Rcpp in 30 minutes"
 subtitle : "Example : Poisson LASSO Regression" 
